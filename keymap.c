@@ -7,83 +7,84 @@
 
 enum custom_keycodes
 {
-	UMLAUT_A,
-	UMLAUT_U,
-	UMLAUT_O,
+	DIACRITIC_A,
+	DIACRITIC_U,
+	DIACRITIC_O,
 	DOUBLE_S,
 	EURO_SIGN,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
-	switch (keycode)
-	{
-		case UMLAUT_A:
-		if(record->event.pressed)
-			{
-				register_code(KC_RALT);
-				register_code(KC_Q);
-			}
-		else
-			{
-				unregister_code(KC_RALT);
-				unregister_code(KC_Q);
-			}
-		break;
+  switch (keycode)
+  {
+    case DIACRITIC_A:
+    if(record->event.pressed)
+      {
+        register_code(KC_RALT);
+        register_code(KC_Q);
+      }
+    else
+      {
+        unregister_code(KC_RALT);
+        unregister_code(KC_Q);
+      }
+    return false;
 
-		case UMLAUT_U:
-		if(record->event.pressed)
-			{
-				register_code(KC_RALT);
-				register_code(KC_Y);
-			}
-		else
-			{
-				unregister_code(KC_RALT);
-				unregister_code(KC_Y);
-			}
-		break;
+    case DIACRITIC_U:
+    if(record->event.pressed)
+      {
+        register_code(KC_RALT);
+        register_code(KC_Y);
+      }
+    else
+      {
+        unregister_code(KC_RALT);
+        unregister_code(KC_Y);
+      }
+    return false;
 
-		case UMLAUT_O:
-		if(record->event.pressed)
-			{
-				register_code(KC_RALT);
-				register_code(KC_P);
-			}
-		else
-			{
-				unregister_code(KC_RALT);
-				unregister_code(KC_P);
-			}
-		break;
+    case DIACRITIC_O:
+    if(record->event.pressed)
+      {
+        register_code(KC_RALT);
+        register_code(KC_P);
+      }
+    else
+      {
+        unregister_code(KC_RALT);
+        unregister_code(KC_P);
+      }
+    return false;
 
-		case DOUBLE_S:
-		if(record->event.pressed)
-			{
-				register_code(KC_RALT);
-				register_code(KC_S);
-			}
-		else
-			{
-				unregister_code(KC_RALT);
-				unregister_code(KC_S);
-			}
-		break;
+    case DOUBLE_S:
+    if(record->event.pressed)
+      {
+        register_code(KC_RALT);
+        register_code(KC_S);
+      }
+    else
+      {
+        unregister_code(KC_RALT);
+        unregister_code(KC_S);
+      }
+    return false;
 
-		case EURO_SIGN:
-		if(record->event.pressed)
-			{
-				register_code(KC_RALT);
-				register_code(KC_5);
-			}
-			else
-			{
-				unregister_code(KC_RALT);
-				unregister_code(KC_5);
-			}
-		break;
-	}
-return true;
+    case EURO_SIGN:
+    if(record->event.pressed)
+      {
+        register_code(KC_RALT);
+        register_code(KC_5);
+      }
+      else
+      {
+        unregister_code(KC_RALT);
+        unregister_code(KC_5);
+      }
+    return false;
+    default: 
+      return true;
+  }
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = 
@@ -105,12 +106,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	[1] =	LAYOUT(
 			KC_SYSTEM_WAKE, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_TRNS, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, 
 
-			KC_TRNS, KC_TRNS, KC_TRNS, EURO_SIGN, KC_TRNS, KC_TRNS, KC_CALCULATOR, UMLAUT_U , KC_TRNS, UMLAUT_O, KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+			KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, DIACRITIC_U , KC_TRNS, DIACRITIC_O, KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 
-			KC_TRNS, UMLAUT_A, DOUBLE_S, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME,
+			KC_TRNS, DIACRITIC_A, DOUBLE_S, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME,
 
 			KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MAIL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_AUDIO_VOL_UP, KC_END,
 
 			KC_TRNS, KC_TRNS, KC_TRNS, KC_RALT, KC_TRNS, KC_TRNS, KC_MEDIA_PREV_TRACK, KC_AUDIO_VOL_DOWN, KC_MEDIA_NEXT_TRACK),
 };
 
+€säÄuuoö
