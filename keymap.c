@@ -7,7 +7,8 @@
 
 enum custom_keycodes
 {
-	DIACRITIC_A = SAFE_RANGE,
+	//SAFE_RANGE macro guarantees custom keycodes to be unique
+	DIACRITIC_A = SAFE_RANGE, 
 	DIACRITIC_U,
 	DIACRITIC_O,
 	DOUBLE_S,
@@ -18,72 +19,88 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
   switch (keycode)
   {
-    case DIACRITIC_A:
+	//Macro for ä and Ä
+	case DIACRITIC_A:
     if(record->event.pressed)
-      {
-        register_code(KC_RALT);
-        register_code(KC_Q);
-      }
+		{
+			//when keycode is pressed:
+			register_code(KC_RALT);
+			register_code(KC_Q);
+		}
     else
-      {
-        unregister_code(KC_RALT);
-        unregister_code(KC_Q);
-      }
+		{
+			//When keycode is released:
+			unregister_code(KC_RALT);
+			unregister_code(KC_Q);
+		}
     return false;
 
+	//Macro for ü and Ü
     case DIACRITIC_U:
     if(record->event.pressed)
-      {
-        register_code(KC_RALT);
-        register_code(KC_Y);
-      }
+		{
+			//when keycode is pressed:
+			register_code(KC_RALT);
+			register_code(KC_Y);
+		}
     else
-      {
-        unregister_code(KC_RALT);
-        unregister_code(KC_Y);
-      }
+		{
+			//When keycode is released:
+			unregister_code(KC_RALT);
+			unregister_code(KC_Y);
+		}
     return false;
 
+	//Macro for ö and Ö
     case DIACRITIC_O:
     if(record->event.pressed)
-      {
-        register_code(KC_RALT);
-        register_code(KC_P);
-      }
+		{
+			//when keycode is pressed:
+			register_code(KC_RALT);
+			register_code(KC_P);
+		}
     else
-      {
-        unregister_code(KC_RALT);
-        unregister_code(KC_P);
-      }
+		{
+			//When keycode is released:
+			unregister_code(KC_RALT);
+			unregister_code(KC_P);
+		}
     return false;
 
+	//Macro for ß 
     case DOUBLE_S:
     if(record->event.pressed)
-      {
-        register_code(KC_RALT);
-        register_code(KC_S);
-      }
+		{
+			//when keycode is pressed:
+			register_code(KC_RALT);
+			register_code(KC_S);
+		}
     else
-      {
-        unregister_code(KC_RALT);
-        unregister_code(KC_S);
-      }
+		{
+			//When keycode is released:
+			unregister_code(KC_RALT);
+			unregister_code(KC_S);
+		}
     return false;
 
+	//Macro for €
     case EURO_CURRENCY_SIGN:
     if(record->event.pressed)
-      {
-        register_code(KC_RALT);
-        register_code(KC_5);
-      }
-      else
-      {
-        unregister_code(KC_RALT);
-        unregister_code(KC_5);
-      }
+		{
+			//when keycode is pressed:
+			register_code(KC_RALT);
+			register_code(KC_5);
+		}
+    else
+		{
+			//When keycode is released:
+			unregister_code(KC_RALT);
+			unregister_code(KC_5);
+		}
     return false;
+
     default: 
-      return true;
+      	return true;
   }
 };
 
