@@ -15,10 +15,17 @@
 */
 
 
-//Hold boot and press reset to enter bootloader mode//
+//Hold boot and+ press reset to enter bootloader mode//
+//RALT+Q: ä
+//RALT+P: ö
+//RALT+Y: ü
+//RALT+S: ß
+//RALT+SHIFT+Q: Ä
+//RALT+SHIFT+P: Ö
+//RALT+SHIFT+Y: Ü
+
 
 #include QMK_KEYBOARD_H
-#include "keymap_german.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = 
 {
