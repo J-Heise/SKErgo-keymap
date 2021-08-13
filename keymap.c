@@ -1,28 +1,9 @@
+//Written for Keyz.io SKErgo rev. 1
+
 //Hold boot and+ press reset to enter bootloader mode//
 //MCU: ATMEGA32A
 
-//RALT+Q: ä
-//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_8)));
-
-//RALT+P: ö
-//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_4) SS_TAP(X_KP_6)));
-
-//RALT+Y: ü
-//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_5) SS_TAP(X_KP_2)));
-
-//RALT+S: ß
-
-//RALT+SHIFT+Q: Ä
-//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_9) SS_TAP(X_KP_6)));
-
-//RALT+SHIFT+P: Ö
-//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_1) SS_TAP(X_KP_4)));
-
-//RALT+SHIFT+Y: Ü
-//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_0)));
-
 #include QMK_KEYBOARD_H
-#include "keymap_german.h"
 
 enum custom_keycodes
 {
