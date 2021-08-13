@@ -7,9 +7,9 @@
 
 enum custom_keycodes
 {
-	A_UMLAUT,
-	U_UMLAUT,
-	O_UMLAUT,
+	UMLAUT_A,
+	UMLAUT_U,
+	UMLAUT_O,
 	DOUBLE_S,
 	EURO_SIGN,
 };
@@ -18,8 +18,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
 	switch (keycode)
 	{
-		case A_UMLAUT:
-			if(record->event.pressed)
+		case UMLAUT_A:
+		if(record->event.pressed)
 			{
 				register_code(KC_RALT);
 				register_code(KC_Q);
@@ -31,8 +31,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 			}
 		break;
 
-		case U_UMLAUT:
-			if(record->event.pressed)
+		case UMLAUT_U:
+		if(record->event.pressed)
 			{
 				register_code(KC_RALT);
 				register_code(KC_Y);
@@ -44,7 +44,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 			}
 		break;
 
-		case O_UMLAUT:
+		case UMLAUT_O:
 		if(record->event.pressed)
 			{
 				register_code(KC_RALT);
@@ -105,9 +105,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	[1] =	LAYOUT(
 			KC_SYSTEM_WAKE, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_TRNS, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, 
 
-			KC_TRNS, KC_TRNS, KC_TRNS, EURO_SIGN, KC_TRNS, KC_TRNS, KC_CALCULATOR, U_UMLAUT , KC_TRNS, O_UMLAUT, KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+			KC_TRNS, KC_TRNS, KC_TRNS, EURO_SIGN, KC_TRNS, KC_TRNS, KC_CALCULATOR, UMLAUT_U , KC_TRNS, UMLAUT_O, KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 
-			KC_TRNS, A_UMLAUT, DOUBLE_S, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME,
+			KC_TRNS, UMLAUT_A, DOUBLE_S, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME,
 
 			KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MAIL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_AUDIO_VOL_UP, KC_END,
 
