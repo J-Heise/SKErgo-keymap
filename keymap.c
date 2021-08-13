@@ -1,31 +1,95 @@
-/* Copyright (C) 2021  Keyz.io Ltd.
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-
 //Hold boot and+ press reset to enter bootloader mode//
-//RALT+Q: ä
-//RALT+P: ö
-//RALT+Y: ü
-//RALT+S: ß
-//RALT+SHIFT+Q: Ä
-//RALT+SHIFT+P: Ö
-//RALT+SHIFT+Y: Ü
+//MCU: ATMEGA32A
 
+//RALT+Q: ä
+//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_8)));
+
+//RALT+P: ö
+//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_4) SS_TAP(X_KP_6)));
+
+//RALT+Y: ü
+//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_5) SS_TAP(X_KP_2)));
+
+//RALT+S: ß
+
+//RALT+SHIFT+Q: Ä
+//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_9) SS_TAP(X_KP_6)));
+
+//RALT+SHIFT+P: Ö
+//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_1) SS_TAP(X_KP_4)));
+
+//RALT+SHIFT+Y: Ü
+//SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_0)));
 
 #include QMK_KEYBOARD_H
+#include "keymap_german.h"
+
+enum custom_keycodes
+{
+	A_UMLAUT,
+	U_UMLAUT,
+	O_UMLAUT,
+	DOUBLE_S,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record)
+{
+	switch (keycode)
+	{
+		case A_UMLAUT:
+			if(record->event.pressed)
+			{
+				register_code(KC_RALT);
+				register_code(KC_Q);
+			}
+		else
+			{
+				unregister_code(KC_RALT);
+				unregister_code(KC_Q);
+			}
+		break;
+
+		case U_UMLAUT:
+			if(record->event.pressed)
+			{
+				register_code(KC_RALT);
+				register_code(KC_Y);
+			}
+		else
+			{
+				unregister_code(KC_RALT);
+				unregister_code(KC_Y);
+			}
+		break;
+
+		case O_UMLAUT:
+		if(record->event.pressed)
+			{
+				register_code(KC_RALT);
+				register_code(KC_P);
+			}
+		else
+			{
+				unregister_code(KC_RALT);
+				unregister_code(KC_P);
+			}
+		break;
+
+		case DOUBLE_S:
+		if(record->event.pressed)
+			{
+				register_code(KC_RALT);
+				register_code(KC_S);
+			}
+		else
+			{
+				unregister_code(KC_RALT);
+				unregister_code(KC_S);
+			}
+		break;
+	}
+return true;
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = 
 {
@@ -46,11 +110,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	[1] =	LAYOUT(
 			KC_SYSTEM_WAKE, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_TRNS, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, 
 
-			KC_TRNS, KC_TRNS, KC_TRNS, KC_MY_COMPUTER, KC_TRNS, KC_TRNS, KC_CALCULATOR, DE_UDIA , KC_TRNS, DE_ODIA, KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+			KC_TRNS, KC_TRNS, KC_TRNS, KC_MY_COMPUTER, KC_TRNS, KC_TRNS, KC_CALCULATOR, U_UMLAUT , KC_TRNS, O_UMLAUT, KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 
-			KC_TRNS, DE_ADIA, DE_SS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME,
+			KC_TRNS, A_UMLAUT, DOUBLE_S, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME,
 
 			KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MAIL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_AUDIO_VOL_UP, KC_END,
 
 			KC_TRNS, KC_TRNS, KC_TRNS, KC_RALT, KC_TRNS, KC_TRNS, KC_MEDIA_PREV_TRACK, KC_AUDIO_VOL_DOWN, KC_MEDIA_NEXT_TRACK),
 };
+
