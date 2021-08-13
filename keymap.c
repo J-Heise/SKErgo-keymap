@@ -11,6 +11,7 @@ enum custom_keycodes
 	U_UMLAUT,
 	O_UMLAUT,
 	DOUBLE_S,
+	EURO_SIGN,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
@@ -68,6 +69,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 				unregister_code(KC_S);
 			}
 		break;
+
+		case EURO_SIGN:
+		if(record->event.pressed)
+			{
+				register_code(KC_RALT);
+				register_code(KC_5);
+			}
+			else
+			{
+				unregister_code(KC_RALT);
+				unregister_code(KC_5);
+			}
+		break;
 	}
 return true;
 };
@@ -91,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	[1] =	LAYOUT(
 			KC_SYSTEM_WAKE, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_TRNS, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, 
 
-			KC_TRNS, KC_TRNS, KC_TRNS, KC_MY_COMPUTER, KC_TRNS, KC_TRNS, KC_CALCULATOR, U_UMLAUT , KC_TRNS, O_UMLAUT, KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+			KC_TRNS, KC_TRNS, KC_TRNS, EURO_SIGN, KC_TRNS, KC_TRNS, KC_CALCULATOR, U_UMLAUT , KC_TRNS, O_UMLAUT, KC_MEDIA_PLAY_PAUSE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 
 			KC_TRNS, A_UMLAUT, DOUBLE_S, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME,
 
