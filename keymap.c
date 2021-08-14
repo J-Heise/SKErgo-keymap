@@ -30,6 +30,7 @@ enum custom_keycodes
 	EURO_CURRENCY_SIGN,
 };
 
+//Defines macros.
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
   switch (keycode)
@@ -38,7 +39,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 	case DIACRITIC_A:
     if(record->event.pressed)
 		{
-			//when keycode is pressed:
+			//When keycode is pressed:
 			register_code(KC_RALT);
 			register_code(KC_Q);
 		}
@@ -54,7 +55,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     case DIACRITIC_U:
     if(record->event.pressed)
 		{
-			//when keycode is pressed:
+			//When keycode is pressed:
 			register_code(KC_RALT);
 			register_code(KC_Y);
 		}
@@ -70,7 +71,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     case DIACRITIC_O:
     if(record->event.pressed)
 		{
-			//when keycode is pressed:
+			//When keycode is pressed:
 			register_code(KC_RALT);
 			register_code(KC_P);
 		}
@@ -86,7 +87,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     case DOUBLE_S:
     if(record->event.pressed)
 		{
-			//when keycode is pressed:
+			//When keycode is pressed:
 			register_code(KC_RALT);
 			register_code(KC_S);
 		}
@@ -102,7 +103,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     case EURO_CURRENCY_SIGN:
     if(record->event.pressed)
 		{
-			//when keycode is pressed:
+			//When keycode is pressed:
 			register_code(KC_RALT);
 			register_code(KC_5);
 		}
